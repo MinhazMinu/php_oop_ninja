@@ -32,6 +32,10 @@ if ($_POST) {
     $product->description = $_POST['description'];
     $product->category_id = $_POST['category_id'];
 
+    $image = !empty($_FILES["image"]["name"])
+        ? sha1_file($_FILES['image']['tmp_name']) . "-" . basename($_FILES["image"]["name"]) : "";
+    $product->image = $image;
+
     // create the product
     if ($product->create()) {
         echo "<div class='alert alert-success'>Product was created.</div>";
@@ -45,7 +49,8 @@ if ($_POST) {
 ?>
 
 <!-- HTML form for creating a product -->
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+
 
     <table class='table table-hover table-responsive table-bordered'>
 
@@ -84,6 +89,10 @@ if ($_POST) {
                 ?>
             </td>
         </tr>
+        <tr>
+            <td>Photo</td>
+            <td><input type="file" name="image" /></td>
+        </tr>
 
         <tr>
             <td></td>
@@ -91,6 +100,7 @@ if ($_POST) {
                 <button type="submit" class="btn btn-primary">Create</button>
             </td>
         </tr>
+
 
     </table>
 </form>
