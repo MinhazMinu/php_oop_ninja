@@ -33,7 +33,7 @@ if ($_POST) {
     $product->category_id = $_POST['category_id'];
 
     $image = !empty($_FILES["image"]["name"])
-        ? sha1_file($_FILES['image']['tmp_name']) . "-" . basename($_FILES["image"]["name"]) : "";
+        ? sha1_file($_FILES['image']['tmp_name']) . round(microtime(true)) . "-" . basename($_FILES["image"]["name"]) : "";
     $product->image = $image;
 
     // create the product
