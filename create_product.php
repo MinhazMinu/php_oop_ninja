@@ -39,6 +39,7 @@ if ($_POST) {
     // create the product
     if ($product->create()) {
         echo "<div class='alert alert-success'>Product was created.</div>";
+        echo $product->uploadPhoto();
     }
 
     // if unable to create the product, tell the user
