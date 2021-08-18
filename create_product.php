@@ -17,7 +17,7 @@ $page_title = "Create Product";
 include_once "layout_header.php";
 
 echo "<div class='right-button-margin'>
-        <a href='index.php' class='btn btn-default pull-right'>Read Products</a>
+        <a href='index.php' class='btn btn-default pull-right'><span class='glyphicon glyphicon-list'></span>Read Products</a>
     </div>";
 
 ?>
